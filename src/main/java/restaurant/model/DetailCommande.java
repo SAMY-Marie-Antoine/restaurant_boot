@@ -37,8 +37,27 @@ public class DetailCommande {
 	private Commande commande;
 	@Column(nullable = false )
 	@JsonView(Views.Common.class)
-	@ManyToOne
-	private Produit produit;
+	//@ManyToOne
+	//private Produit produit;
+	private  int idProduit;
+
+	public int getQte() {
+		return qte;
+	}
+
+	public void setQte(int qte) {
+		this.qte = qte;
+	}
+
+	public int getIdProduit() {
+		return idProduit;
+	}
+
+	public void setIdProduit(int idProduit) {
+		this.idProduit = idProduit;
+	}
+
+
 
 	@Column
 	private boolean dansFormule;
@@ -53,11 +72,12 @@ public class DetailCommande {
 	
 	public DetailCommande() {}
 
-	public DetailCommande(double prix, int qte, Commande commande, Produit produit, boolean dansFormule, TypeProduit type, String libelleFormule) {
+	public DetailCommande(double prix, int qte, Commande commande, int idProduit, boolean dansFormule, TypeProduit type, String libelleFormule) {
 		this.prix = prix;
 		this.qte = qte;
 		this.commande = commande;
-		this.produit = produit;
+		//this.produit = produit;
+		this.idProduit = idProduit;
 		this.dansFormule = dansFormule;
 		this.type = type;
 		this.libelleFormule = libelleFormule;
@@ -112,15 +132,7 @@ public class DetailCommande {
 
 
 
-	public Produit getProduit() {
-		return produit;
-	}
 
-
-
-	public void setProduit(Produit produit) {
-		this.produit = produit;
-	}
 
 
 

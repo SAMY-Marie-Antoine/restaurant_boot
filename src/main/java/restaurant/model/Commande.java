@@ -164,7 +164,7 @@ public class Commande {
 		for (idx = 0; idx < this.detailCommandes.size(); idx++) {
 			dCmd  = this.detailCommandes.get(idx);
 		
-			montant=montant+ dCmd.getPrix() * dCmd.getQty();
+			montant=montant+ dCmd.getPrix() * dCmd.getqte();
 		}
 		return montant;
 	

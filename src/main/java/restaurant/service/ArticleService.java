@@ -11,7 +11,7 @@ import restaurant.view.Views.Article;
 
 @Service
 public class ArticleService {
-
+   /*
      @Autowired
 	IDAOArticle daoArticle;
 	
@@ -57,5 +57,5 @@ public class ArticleService {
 	{
 		daoArticle.deleteById(id);
 	}
-		
+		*/
 }

@@ -6,7 +6,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+
+import restaurant.dao.IDAOClient;
+import restaurant.dao.IDAOCommande;
+import restaurant.dao.IDAODetailCommande;
 import restaurant.dao.IDAOGestionnaire;
+import restaurant.dao.IDAOProduit;
 import restaurant.model.Client;
 import restaurant.model.Commande;
 import restaurant.model.DetailCommande;
@@ -17,54 +22,92 @@ import restaurant.model.TypeProduit;
 import restaurant.service.ClientService;
 import restaurant.service.ProduitService;
 
+
 public class PopulateDB {
 
+	 @Autowired
+	static
+     ProduitService produitSrv;
+     @Autowired
+	static
+     ClientService clientSrv;
+     //@Autowired
+     //FormuleService formuleSrv;
+     @Autowired
+	static
+     IDAOGestionnaire daoGestionnaire;
+     
+     @Autowired
+     static IDAOProduit idaoProduit;
+     
+     @Autowired
+     static IDAOClient idaoClient;
+     
+     @Autowired
+     static IDAOCommande idaoCommande;
+     
+     @Autowired
+     static IDAODetailCommande idaoDetailCommande;
+     
     public static void main(String[] args) {
 
-        @Autowired
-        ProduitService produitSrv;
-        @Autowired
-        ClientService clientSrv;
-        @Autowired
-        FormuleService formuleSrv;
-        @Autowired
-        IDAOGestionnaire daoGestionnaire;
+       
         
         Produit entree1 = new Produit("Salade Verte",8.50,10,true,TypeProduit.entrée,false,false,true,false,true,true,true);
         Produit entree2 = new Produit("Soupe Miso",7.20,10,true,TypeProduit.entrée,false,true,false,false,true,true,true);
         Produit entree3 = new Produit("Tabouleh",10.90,10,false,TypeProduit.entrée,false,false,false,false,false,true,true);
 
-        produitSrv.insert(entree1);
-        produitSrv.insert(entree2);
-        produitSrv.insert(entree3);
+        /*try {
+			produitSrv.insert(entree1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+        
+        System.out.println(idaoProduit);
+        idaoProduit.save(entree1);
+        idaoProduit.save(entree2);
+        
+        
+        //produitSrv.insert(entree2);
+        //produitSrv.insert(entree3);
 
         Produit plat1 = new Produit("Pâtes au saumon",18.90,10,true,TypeProduit.plat, false,true,false,true,false,true,false);
         Produit plat2 = new Produit("Assiette Vegan",16.90,10,true,TypeProduit.plat,false,true,true,false,true,true,true);
         Produit plat3 = new Produit("Ragoût de Tofu",21.90,10,true,TypeProduit.plat,false,true,true,false,true,true,true);
         Produit plat4 = new Produit("Tajine Agneau",24.90,10,false,TypeProduit.plat,false,false,true,false,false,true,false);
 
-        produitSrv.insert(plat1);
+        /*produitSrv.insert(plat1);
         produitSrv.insert(plat2);
         produitSrv.insert(plat3);
-        produitSrv.insert(plat4);
+        produitSrv.insert(plat4);*/
+        
+        idaoProduit.save(plat1);
+        idaoProduit.save(plat2);
+        idaoProduit.save(plat3);
+        idaoProduit.save(plat4);
 
         Produit dessert1 = new Produit("Tarte à la crème",9.50,10,true,TypeProduit.dessert,true,true,false,true,false,true,false);
         Produit dessert2 = new Produit("Gâteau aux noisettes",8.90,10,true,TypeProduit.dessert,false,true,true,false,false,true,true);
         Produit dessert3 = new Produit("Brownie",6.50,10,false,TypeProduit.dessert,true,false,true,true,false,true,false);
 
-        produitSrv.insert(dessert1);
-        produitSrv.insert(dessert2);
-
+        //produitSrv.insert(dessert1);
+        //produitSrv.insert(dessert2);
+        idaoProduit.save(dessert1);
+        idaoProduit.save(dessert2);
+  
         Produit boisson1 = new Produit("Thé glacé",5.10,10,false,TypeProduit.boisson,false,false,false,false,false,true,true);
         Produit boisson2 = new Produit("Cola",3.8,10,true,TypeProduit.boisson,false,false,false,false,false,true,true);
 
-        produitSrv.insert(boisson1);
-        produitSrv.insert(boisson2);
+        /*produitSrv.insert(boisson1);
+        produitSrv.insert(boisson2);*/
+        idaoProduit.save(boisson1);
+        idaoProduit.save(boisson2);
 
         Client client1 = new Client("jordanabid");
         Client client2 = new Client("alicebob");
 
-        clientSrv.insert(client1);
+        /*clientSrv.insert(client1);
         clientSrv.insert(client2);
 
         Gestionnaire gest1 = new Gestionnaire("gordonramsay");
@@ -80,11 +123,11 @@ public class PopulateDB {
 
         Formule formule1 = new Formule("EntreePlatDessert",36,list1);
         Formule formule2 = new Formule("PlatBoisson",18,list2);
-        Formule formule3 = new Formule("PlatDessert",20,list3);
+        Formule formule3 = new Formule("PlatDessert",20,list3);*/
 
-        formuleSrv.insert(formule1);
-        formuleSrv.insert(formule2);
-        formuleSrv.insert(formule3);
+        //formuleSrv.insert(formule1);
+        //formuleSrv.insert(formule2);
+        //formuleSrv.insert(formule3);
 
         //Commande cmd = new Commande();
         

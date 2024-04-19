@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.view.Views;
 
-@Entity
+//@Entity
 //Info selon mapping inheritence choisi dans Article
-public class Carte extends Article {
-
+public class Carte {//extends Article {
+/*
 	@Column(columnDefinition="INT",nullable=false)
 	@JsonView(Views.Common.class)
 	private int quantite;
@@ -55,6 +55,6 @@ public class Carte extends Article {
 			", quantite='" + getQuantite() + "'" +
 			", produit='" + getProduit() + "'" +
 			"}";
-	}
+	}*/
 	
 }

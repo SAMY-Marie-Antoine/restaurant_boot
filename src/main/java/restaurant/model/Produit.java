@@ -12,12 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.view.Views;
 
 @Entity
 @Table(name="produit")
+@Component  
 public class Produit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

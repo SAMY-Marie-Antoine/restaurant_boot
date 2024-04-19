@@ -3,8 +3,12 @@ package restaurant.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +34,11 @@ public class Formule {
 	@JsonView(Views.Common.class)
 	private double prix;
 	//Check mapping ManyToMany?
-	@Column(nullable = false)
+	//@Column(nullable = false)
+	@ElementCollection(targetClass=TypeProduit.class)
+	@Enumerated(EnumType.STRING)
+	@CollectionTable(name="composition_formule")
+	@Column(name="type_produit")
 	@JsonView(Views.ProduitWithVentes.class)
 	private List<TypeProduit> typeProduits=new ArrayList();
 	
