@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import restaurant.model.Client;
-import restaurant.view.Views.Commande;
+import restaurant.model.Commande;
 
 public interface IDAOCommande extends JpaRepository<Commande, Integer>{
     

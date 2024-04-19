@@ -8,7 +8,6 @@ public class Views {
 
 	public class Produit extends Common {}//Acces JSON présent sur toutes les relations toOne dans la classe Compte
 	public class ProduitWithVentes extends Produit{}
-	
 	public class Commande extends Common {}//Acces JSON présent sur toutes les relations toOne dans la classe Filiere
 	public class CommandeWithVentes extends Commande{} //Acces JSON spécifique pour les chargements toMany
 

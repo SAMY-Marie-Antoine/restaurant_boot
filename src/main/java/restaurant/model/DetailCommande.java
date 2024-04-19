@@ -34,14 +34,13 @@ public class DetailCommande {
 	private int qte;
 	@JoinColumn(nullable = false )
 	@JsonView(Views.Common.class)
-	//@ManyToOne
+	@ManyToOne
 	private Commande commande;
-	@Column(nullable = false )
+	@JoinColumn(nullable = false )
 	@JsonView(Views.Common.class)
-	//@ManyToOne
-	//private Produit produit;
-	private  int idProduit;
-
+	@ManyToOne
+	private Produit produit;
+	
 	public int getQte() {
 		return qte;
 	}
@@ -50,21 +49,14 @@ public class DetailCommande {
 		this.qte = qte;
 	}
 
-	public int getIdProduit() {
-		return idProduit;
-	}
-
-	public void setIdProduit(int idProduit) {
-		this.idProduit = idProduit;
-	}
+	
 
 
 
 	@Column
 	private boolean dansFormule;
-	@ElementCollection(targetClass=TypeProduit.class)
+
 	@Enumerated(EnumType.STRING)
-	@CollectionTable(name="composition_formule")
 	@Column(name="type_produit",nullable = false, columnDefinition = "ENUM('Entrée','Plat','Dessert','Boisson')")
 	private TypeProduit type;
 	@Column(nullable = false )
@@ -75,16 +67,7 @@ public class DetailCommande {
 	
 	public DetailCommande() {}
 
-	public DetailCommande(double prix, int qte, Commande commande, int idProduit, boolean dansFormule, TypeProduit type, String libelleFormule) {
-		this.prix = prix;
-		this.qte = qte;
-		this.commande = commande;
-		//this.produit = produit;
-		this.idProduit = idProduit;
-		this.dansFormule = dansFormule;
-		this.type = type;
-		this.libelleFormule = libelleFormule;
-	}
+	
 
 
 	public Integer getId() {

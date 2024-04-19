@@ -12,9 +12,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.view.Views;
 
-@Entity
 
-@Table(name="article")
 public class Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

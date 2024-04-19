@@ -20,7 +20,7 @@ class RestaurantBootApplicationTests {
     IDAOProduit produitSrv;
     @Autowired
     IDAOClient clientSrv;
-    @Autowired
+    //@Autowired
     //IDAOFormule formuleSrv;
 
 	@Test
