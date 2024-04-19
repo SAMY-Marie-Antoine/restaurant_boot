@@ -1,5 +1,10 @@
 package restaurant.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.view.Views;
@@ -16,8 +21,7 @@ public class Carte {//extends Article {
 	private Produit produit;
 	
 
-	public Carte() {}
-	
+		
 	public Carte(Integer id, DetailCommande detailCommande,int quantite, Produit produit) {
 		super(id, detailCommande);
 		this.quantite = quantite;
@@ -51,7 +55,7 @@ public class Carte {//extends Article {
 	@Override
 	public String toString() {
 		return "{" +
-			" id='" + super.getId() + "'" +
+			" id='" +  "'" +
 			", quantite='" + getQuantite() + "'" +
 			", produit='" + getProduit() + "'" +
 			"}";

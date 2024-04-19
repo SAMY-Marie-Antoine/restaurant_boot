@@ -1,7 +1,8 @@
 package restaurant.model;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -33,7 +34,7 @@ public class DetailCommande {
 	private int qte;
 	@JoinColumn(nullable = false )
 	@JsonView(Views.Common.class)
-	@ManyToOne
+	//@ManyToOne
 	private Commande commande;
 	@Column(nullable = false )
 	@JsonView(Views.Common.class)
@@ -61,7 +62,9 @@ public class DetailCommande {
 
 	@Column
 	private boolean dansFormule;
+	@ElementCollection(targetClass=TypeProduit.class)
 	@Enumerated(EnumType.STRING)
+	@CollectionTable(name="composition_formule")
 	@Column(name="type_produit",nullable = false, columnDefinition = "ENUM('Entrée','Plat','Dessert','Boisson')")
 	private TypeProduit type;
 	@Column(nullable = false )

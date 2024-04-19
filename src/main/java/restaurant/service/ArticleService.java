@@ -41,7 +41,7 @@ public class ArticleService {
 	
 	public Article update(Article article) 
 	{
-		if(article.getId()==null) 
+		if(article.getClass()==null) 
 		{
 			throw new RuntimeException("Besoin d'un id pour faire une mise à jour.");
 		}

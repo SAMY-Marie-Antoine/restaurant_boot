@@ -1,6 +1,6 @@
 package restaurant.model;
 
 public enum TypeProduit {
-	entrée,plat,dessert,boisson;
+	entree,plat,dessert,boisson;
 
 }
