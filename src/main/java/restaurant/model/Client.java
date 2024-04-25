@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import restaurant.view.Views;
 
 @Entity
-@DiscriminatorValue("Client")
+@DiscriminatorValue("client")
 public class Client extends Compte {
 
 	
@@ -38,7 +38,7 @@ public class Client extends Compte {
 	}
 	
 	public void dateDerniereActivite() {
-		//TODO avec DAOCommande
+		//TODO
 	}
 
 }

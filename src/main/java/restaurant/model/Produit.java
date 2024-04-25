@@ -1,8 +1,5 @@
 package restaurant.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -24,44 +21,44 @@ import restaurant.view.Views;
 public class Produit {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	@Column(nullable = false,length = 35)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private String libelle;
 	@Column(nullable = false,columnDefinition="DECIMAL(5,2)")
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private double prix;
 	@Column(nullable=false,columnDefinition="INT")
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private int stock;
 	@Column(nullable=false)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private boolean dansFormule;
 	@Enumerated(EnumType.STRING)
-	@Column(name="type_produit",nullable = false, columnDefinition = "ENUM('Entree','Plat','Dessert','Boisson')")
-	@JsonView(Views.CommandeWithVentes.class)
+	@Column(name="type_produit",nullable = false, columnDefinition = "ENUM('entree','plat','dessert','boisson')")
+	@JsonView(Views.Common.class)
 	private TypeProduit type;
 	@Column(nullable = false)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private boolean allergie_oeufs;
 	@Column(nullable = false)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private boolean allergie_gluten;
 	@Column(nullable = false)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private boolean allergie_arachides;
 	@Column(nullable = false)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private boolean allergie_lait;
 	@Column(nullable = false)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private boolean allergie_soja;
 	@Column(nullable = false)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private boolean hallal;
 	@Column(nullable = false)
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Common.class)
 	private boolean vegan;
 	
 	public Produit() {}

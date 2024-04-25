@@ -21,11 +21,5 @@ public class Views {
 	public class Menu extends Common {}//Acces JSON présent sur toutes les relations toOne dans la classe Compte
 	public class MenuWithFormules extends Menu{}
 	
-	public class Article extends Common {}//Acces JSON présent sur toutes les relations toOne dans la classe Matiere
-	
-	
-	public class Achat extends Common {}//Acces JSON présent sur toutes les relations toOne dans la classe Module
-
-
 }
 

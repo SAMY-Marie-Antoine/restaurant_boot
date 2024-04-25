@@ -33,14 +33,12 @@ public class Formule {
 	@Column(nullable =false,columnDefinition="DECIMAL(5,2)")
 	@JsonView(Views.Common.class)
 	private double prix;
-	//Check mapping ManyToMany?
-	//@Column(nullable = false)
 	@ElementCollection(targetClass=TypeProduit.class)
 	@Enumerated(EnumType.STRING)
 	@CollectionTable(name="composition_formule")
-	@Column(name="type_produit")
+	@Column(name="type_produit",nullable = false)
 	@JsonView(Views.ProduitWithVentes.class)
-	private List<TypeProduit> typeProduits=new ArrayList();
+	private List<TypeProduit> typeProduits=new ArrayList<TypeProduit>();
 	
 	public Formule() {}
 
@@ -56,11 +54,7 @@ public class Formule {
 		this.prix = prix;
 		this.typeProduits = typeProduits;
 	}
-	
-	public void afficherDetail() {
-		//#Todo
-	}
-	
+		
 	public Integer getId() {
 		return id;
 	}
@@ -91,6 +85,10 @@ public class Formule {
 
 	public void setTypeProduits(List<TypeProduit> typeProduits) {
 		this.typeProduits = typeProduits;
+	}
+
+	public void afficherDetail() {
+		//#Todo
 	}
 
 }

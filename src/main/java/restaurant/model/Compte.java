@@ -17,7 +17,7 @@ import restaurant.view.Views;
 @Entity
 @Table(name="compte")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_compte",columnDefinition = "enum('Gestionnaire', 'Client')")
+@DiscriminatorColumn(name="type_compte",columnDefinition = "enum('gestionnaire', 'client')")
 public abstract class Compte {
 
 	@Id

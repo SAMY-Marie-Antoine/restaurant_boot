@@ -54,12 +54,4 @@ public class Menu{
 		this.formule = formule;
 	}
 
-	@Override
-	public String toString() {
-		return "{" +
-			" produits='" + getProduits() + "'" +
-			", formule='" + getFormule() + "'" +
-			"}";
-	}
-
 }

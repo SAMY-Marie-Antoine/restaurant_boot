@@ -1,17 +1,13 @@
 package restaurant.model;
 
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -21,7 +17,7 @@ import restaurant.view.Views;
 
 
 @Entity
-@Table(name="detailCommande")
+@Table(name="detail_commande")
 public class DetailCommande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,133 +28,65 @@ public class DetailCommande {
 	private double prix;
 	@Column
 	private int qte;
-	@JoinColumn(nullable = false )
 	@JsonView(Views.Common.class)
 	@ManyToOne
 	private Commande commande;
-	@JoinColumn(nullable = false )
 	@JsonView(Views.Common.class)
-	@ManyToOne
+	@OneToOne
 	private Produit produit;
-	
+	@OneToOne
+	@JsonView(Views.Common.class)
+	private Menu menu;
+		
+	public DetailCommande() {}
+
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public double getPrix() {
+		return this.prix;
+	}
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
 	public int getQte() {
-		return qte;
+		return this.qte;
 	}
 
 	public void setQte(int qte) {
 		this.qte = qte;
 	}
 
-	
-
-
-
-	@Column
-	private boolean dansFormule;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name="type_produit",nullable = false, columnDefinition = "ENUM('Entrée','Plat','Dessert','Boisson')")
-	private TypeProduit type;
-	@Column(nullable = false )
-	@JsonView(Views.Common.class)
-	private String libelleFormule;
-		
-	
-	
-	public DetailCommande() {}
-
-	
-
-
-	public Integer getId() {
-		return id;
-	}
-
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
-
-	public double getPrix() {
-		return prix;
-	}
-
-
-
-	public void setPrix(double prix) {
-		this.prix = prix;
-	}
-
-
-
-	public int getqte() {
-		return qte;
-	}
-
-
-
-	public void setqte(int qte) {
-		this.qte = qte;
-	}
-
-
-
 	public Commande getCommande() {
-		return commande;
+		return this.commande;
 	}
-
-
 
 	public void setCommande(Commande commande) {
 		this.commande = commande;
 	}
 
-
-
-
-
-
-
-	public boolean isDansFormule() {
-		return dansFormule;
+	public Produit getProduit() {
+		return this.produit;
 	}
 
-
-
-	public void setDansFormule(boolean dansFormule) {
-		this.dansFormule = dansFormule;
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
 
-
-
-	public TypeProduit getType() {
-		return type;
+	public Menu getMenu() {
+		return this.menu;
 	}
 
-
-
-	public void setType(TypeProduit type) {
-		this.type = type;
+	public void setMenu(Menu menu) {
+		this.menu = menu;
 	}
-
-
-
-	public String getLibelleFormule() {
-		return libelleFormule;
-	}
-
-
-
-	public void setLibelleFormule(String libelleFormule) {
-		this.libelleFormule = libelleFormule;
-	}
-	
-
-	
-
-
 
 }

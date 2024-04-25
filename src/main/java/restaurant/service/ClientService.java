@@ -6,18 +6,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import restaurant.dao.IDAOClient;
+import restaurant.dao.IDAOCompte;
 import restaurant.model.Client;
+import restaurant.model.Compte;
 
 @Service
 public class ClientService {
 
      @Autowired
-	IDAOClient daoClient;
+	IDAOCompte daoClient;
 	
 	public Client getById(Integer id) 
 	{
-		Optional<Client> opt = daoClient.findById(id);
+		Optional<Compte> opt = daoClient.findById(id);
 		if(opt.isEmpty()) 
 		{
 			return null;
@@ -30,7 +31,7 @@ public class ClientService {
 
 	public List<Client> getAll()
 	{
-		return daoClient.findAll();
+		return daoClient.findAllClient();
 	}
 	
 	public Client insert(Client client) 
