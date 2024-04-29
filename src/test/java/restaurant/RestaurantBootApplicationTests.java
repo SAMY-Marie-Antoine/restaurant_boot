@@ -88,9 +88,10 @@ class RestaurantBootApplicationTests {
         clientSrv.insert(client1);
         clientSrv.insert(client2);
 
-        Gestionnaire gest1 = new Gestionnaire("gordonramsay");
+        Gestionnaire gest1 = new Gestionnaire("gordonramsay", "123456");
 
         gestionnaireSrv.save(gest1);
+        
 
         List<TypeProduit> list1 = new ArrayList<TypeProduit>();
         Collections.addAll(list1,TypeProduit.entree,TypeProduit.plat,TypeProduit.dessert);

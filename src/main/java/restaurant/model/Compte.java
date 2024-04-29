@@ -27,7 +27,7 @@ public abstract class Compte {
 	@Column(length = 30, nullable=false, unique=true)
 	@JsonView(Views.Common.class)
 	protected String username;
-	@Column(length = 30, nullable=false, unique=true)
+	@Column(length = 30, nullable=false)
 	@JsonView(Views.Common.class)
 	protected String password;
 	
