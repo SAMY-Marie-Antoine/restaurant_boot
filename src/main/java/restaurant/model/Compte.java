@@ -27,16 +27,23 @@ public abstract class Compte {
 	@Column(length = 30, nullable=false, unique=true)
 	@JsonView(Views.Common.class)
 	protected String username;
+	@Column(length = 30, nullable=false, unique=true)
+	@JsonView(Views.Common.class)
+	protected String password;
 	
+	
+
 	public Compte() {}
 
-	public Compte(Integer id, String username) {
+	public Compte(Integer id, String username, String password) {
 		this.id = id;
 		this.username = username;
+		this.password = password;
 	}
 	
-	public Compte(String username) {
+	public Compte(String username, String password) {
 		this.username = username;
+		this.password = password;
 	}
 
 	public Integer getId() {
@@ -54,5 +61,11 @@ public abstract class Compte {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

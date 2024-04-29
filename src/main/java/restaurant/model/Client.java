@@ -21,12 +21,12 @@ public class Client extends Compte {
 		
 	public Client() {}
 
-	public Client(Integer id, String username) {
-		super(id,username);
+	public Client(Integer id, String username, String password) {
+		super(id,username, password);
 	}
 
-	public Client(String username) {
-		super(username);
+	public Client(String username, String password) {
+		super(username, password);
 	}
 
 	public List<Commande> getHistCommandes() {

@@ -9,8 +9,8 @@ public class Gestionnaire extends Compte{
 
 	public Gestionnaire() {}
 	
-	public Gestionnaire(String username) {
-		super(username);
+	public Gestionnaire(String username, String password) {
+		super(username, password);
 	}
 
 	public void supprimerClientsObsoletes() {

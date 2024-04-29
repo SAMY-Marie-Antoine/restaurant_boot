@@ -82,8 +82,8 @@ class RestaurantBootApplicationTests {
         produitSrv.insert(boisson1);
         produitSrv.insert(boisson2);
 
-        Client client1 = new Client("jordanabid");
-        Client client2 = new Client("alicebob");
+        Client client1 = new Client("jordanabid", "123456");
+        Client client2 = new Client("alicebob","123456");
 
         clientSrv.insert(client1);
         clientSrv.insert(client2);
