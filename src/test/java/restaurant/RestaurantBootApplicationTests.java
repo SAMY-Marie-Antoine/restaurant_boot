@@ -8,16 +8,23 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import restaurant.dao.IDAOProduit;
+import restaurant.dao.IDAOCompte;
+import restaurant.model.Avis;
 import restaurant.model.Client;
+import restaurant.model.Commande;
+import restaurant.model.DetailCommande;
 import restaurant.model.Formule;
 import restaurant.model.Gestionnaire;
+import restaurant.model.Menu;
 import restaurant.model.Produit;
 import restaurant.model.TypeProduit;
+import restaurant.service.AvisService;
 import restaurant.service.ClientService;
+import restaurant.service.CommandeService;
+import restaurant.service.DetailCommandeService;
 import restaurant.service.FormuleService;
+import restaurant.service.MenuService;
 import restaurant.service.ProduitService;
-import restaurant.dao.IDAOCompte;
 
 @SpringBootTest
 class RestaurantBootApplicationTests {
@@ -32,6 +39,14 @@ class RestaurantBootApplicationTests {
     FormuleService formuleSrv;
     @Autowired
     IDAOCompte gestionnaireSrv;
+    @Autowired
+    MenuService menuSrv;
+    @Autowired
+    DetailCommandeService dCommandeSrv;
+    @Autowired
+    CommandeService commandeSrv;
+    @Autowired
+    AvisService avisSrv;
 
 	@Test
 	void contextLoads() {
@@ -91,6 +106,58 @@ class RestaurantBootApplicationTests {
         formuleSrv.insert(formule1);
         formuleSrv.insert(formule2);
         formuleSrv.insert(formule3);
+
+        List<Produit> list4= new ArrayList<Produit>();
+        Collections.addAll(list4,entree1,plat1,dessert1);
+        Menu menu1 = new Menu(list4,formule1);
+
+        List<Produit> list5= new ArrayList<Produit>();
+        Collections.addAll(list5,entree2,plat2,dessert2);
+        Menu menu2 = new Menu(list5,formule1);
+
+        List<Produit> list6= new ArrayList<Produit>();
+        Collections.addAll(list6,plat4,dessert3);
+        Menu menu3 = new Menu(list6,formule3);
+
+        menuSrv.insert(menu1);
+        menuSrv.insert(menu2);
+        menuSrv.insert(menu3);
+
+        Commande cmd1 = new Commande();
+        Commande cmd2 = new Commande();
+        
+        commandeSrv.insert(cmd1);
+        commandeSrv.insert(cmd2);
+
+        DetailCommande detailCommande1 = new DetailCommande(1,cmd1,menu1);
+        DetailCommande detailCommande2 = new DetailCommande(3,cmd1,dessert2);
+        DetailCommande detailCommande3 = new DetailCommande(2,cmd1,menu2);
+
+        dCommandeSrv.insert(detailCommande1);
+        dCommandeSrv.insert(detailCommande2);
+        dCommandeSrv.insert(detailCommande3);
+
+        cmd1.setCommentaire("Pas trop de sel");
+        cmd1.setClient(client1);
+
+        DetailCommande detailCommande4 = new DetailCommande(1,cmd2,menu3);
+        DetailCommande detailCommande5 = new DetailCommande(3,cmd2,plat4);
+
+        dCommandeSrv.insert(detailCommande4);
+        dCommandeSrv.insert(detailCommande5);
+
+        cmd2.setCommentaire("Avec piment");
+        cmd2.setClient(client2);
+
+
+        Avis avis1 = new Avis("C'était bien",cmd1);
+        Avis avis2 = new Avis("C'était pas bien",cmd2);
+
+        avisSrv.insert(avis1);
+        avisSrv.insert(avis2);
+        commandeSrv.insert(cmd1);
+        commandeSrv.insert(cmd2);
+
 	}
 	
 	

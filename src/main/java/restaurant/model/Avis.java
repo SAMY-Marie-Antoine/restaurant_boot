@@ -28,10 +28,10 @@ public class Avis {
 	@Column(length = 250, nullable=false)
 	@JsonView(Views.Common.class)
 	private String avis;
-	@ManyToOne
-	@JoinColumn(name="id_client",nullable=false)
-	@JsonView(Views.ClientWithAchats.class)
-	private Client client;
+	// @ManyToOne
+	// @JoinColumn(name="id_client",nullable=false)
+	// @JsonView(Views.ClientWithAchats.class)
+	// private Client client;
 	@OneToOne
 	@JoinColumn(name="id_commande",nullable=false)
 	@JsonView(Views.Client.class)
@@ -44,18 +44,16 @@ public class Avis {
 	
 	public Avis() {}
 
-	public Avis(Integer id, String avis, Client client, Commande commande) {
+	public Avis(Integer id, String avis, Commande commande) {
 		this.id = id;
 		this.avis = avis;
-		this.client = client;
 		this.commande = commande;
 		this.heure = LocalTime.now();
 		this.date = LocalDate.now();
 	}
 	
-	public Avis(String avis, Client client, Commande commande) {
+	public Avis(String avis, Commande commande) {
 		this.avis = avis;
-		this.client = client;
 		this.commande = commande;
 		this.heure = LocalTime.now();
 		this.date = LocalDate.now();
@@ -92,14 +90,6 @@ public class Avis {
 
 	public void setAvis(String avis) {
 		this.avis = avis;
-	}
-
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
 	}
 
 	public Commande getCommande() {

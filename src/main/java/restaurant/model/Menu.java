@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -21,21 +22,25 @@ public class Menu{
 	private Integer id;
 	@OneToMany
 	@JsonView(Views.ProduitWithVentes.class)
-	private  List<Produit>  produits;
+	private List<Produit> produits;
 	@ManyToOne
 	@JsonView(Views.MenuWithFormules.class)
 	private Formule formule;
 	
 	public Menu() {	}
 	
-	public Menu(Integer id, DetailCommande detailCommande,List<Produit> produits, Formule formule) {
+
+	public Menu(List<Produit> produits, Formule formule) {
 		this.produits = produits;
 		this.formule = formule;
 	}
+	
+	public Integer getId() {
+		return this.id;
+	}
 
-	public Menu(DetailCommande detailCommande,List<Produit> produits, Formule formule) {
-		this.produits = produits;
-		this.formule = formule;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public List<Produit> getProduits() {

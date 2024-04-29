@@ -44,7 +44,10 @@ public class Commande {
 	@JsonView(Views.Common.class)
 	private LocalTime heureCommande;
 		
-	public Commande() {	}
+	public Commande() {
+		this.dateCommande  = LocalDate.now();
+		this.heureCommande = LocalTime.now();
+	}
 
 	public Integer getId() {
 		return id;

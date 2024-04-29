@@ -40,6 +40,19 @@ public class DetailCommande {
 		
 	public DetailCommande() {}
 
+	public DetailCommande(int qte, Commande commande, Menu menu) {
+		this.qte = qte;
+		this.commande = commande;
+		this.menu = menu;
+		this.prix = qte*menu.getFormule().getPrix();
+	}
+
+	public DetailCommande(int qte, Commande commande, Produit produit) {
+		this.qte = qte;
+		this.commande = commande;
+		this.produit = produit;
+		this.prix = qte*produit.getPrix();
+	}
 
 	public Integer getId() {
 		return this.id;
