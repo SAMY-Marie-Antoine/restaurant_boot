@@ -21,55 +21,54 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.model.Client;
-import restaurant.model.Produit;
-import restaurant.service.ClientService;
+import restaurant.model.Gestionnaire;
+import restaurant.service.GestionnaireService;
 import restaurant.view.Views;
+//import restaurant.view.Views.Common;
 
 @RestController
-@RequestMapping("/api/clients")
+@RequestMapping("/api/gestionaires")
 @CrossOrigin("*")
-public class ClientRestController {
-	
+public class GestionnaireRestController {
+
 	@Autowired
-	ClientService clientSrv;
+	GestionnaireService gestionnaireSrv;
 	
 	@GetMapping
-	@JsonView(Views.Client.class)
-	public List<Client> allClients() 
+	@JsonView(Views.Gestionnaire.class)
+	public List<Gestionnaire> allClients() 
 	{
-		return clientSrv.getAll();
+		return gestionnaireSrv.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	@JsonView(Views.Client.class)
-	public Client ficheClient(@PathVariable Integer id) 
+	@JsonView(Views.Gestionnaire.class)
+	public Gestionnaire ficheGestionnaire(@PathVariable Integer id) 
 	{
-		return clientSrv.getById(id);
+		return gestionnaireSrv.getById(id);
 	}
 	
 	@PostMapping
-	public Client ajoutClient(@Valid @RequestBody Client client, BindingResult result) 
+	public Gestionnaire ajoutGestionnaire(@Valid @RequestBody Gestionnaire gestionnaire, BindingResult result) 
 	{
 		if(result.hasErrors()) 
 		{
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le client n'est pas valide");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le gestionnaire n'est pas valide");
 		}
-		return clientSrv.insert(client);
+		return gestionnaireSrv.insert(gestionnaire);
 	}
 	
 	@PutMapping("/{id}")
-	public Client modifierClient(@PathVariable Integer id,@RequestBody Client client) 
+	public Gestionnaire modifierGestionnaire(@PathVariable Integer id,@RequestBody Gestionnaire gestionnaire) 
 	{
-		client.setId(id);
-		return clientSrv.update(client);
+		gestionnaire.setId(id);
+		return gestionnaireSrv.update(gestionnaire);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void supprimerClient(@PathVariable Integer id) 
+	public void supprimerGestionnaire(@PathVariable Integer id) 
 	{
-		clientSrv.deleteById(id);
+		gestionnaireSrv.deleteById(id);
 	}
 	
-	
-
 }

@@ -23,5 +23,9 @@ public class Views {
 	
 	public class Avis extends Common {} //
 	
+	public class Formule extends Common {}
+	
+	public class Gestionnaire extends Common {}
+	
 }
 

@@ -20,56 +20,54 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import restaurant.model.Client;
+import restaurant.model.Formule;
 import restaurant.model.Produit;
-import restaurant.service.ClientService;
+//import restaurant.model.Produit;
+import restaurant.service.FormuleService;
 import restaurant.view.Views;
 
 @RestController
-@RequestMapping("/api/clients")
+@RequestMapping("/api/formule")
 @CrossOrigin("*")
-public class ClientRestController {
+public class FormuleRestController {
 	
-	@Autowired
-	ClientService clientSrv;
+	@Autowired 
+	FormuleService formuleSrv;
 	
 	@GetMapping
-	@JsonView(Views.Client.class)
-	public List<Client> allClients() 
+	@JsonView(Views.Formule.class)
+	public List<Formule> allFormules() 
 	{
-		return clientSrv.getAll();
+		return formuleSrv.getAll();
 	}
-	
+
 	@GetMapping("/{id}")
-	@JsonView(Views.Client.class)
-	public Client ficheClient(@PathVariable Integer id) 
+	@JsonView(Views.Formule.class)
+	public Formule ficheFormule(@PathVariable Integer id) 
 	{
-		return clientSrv.getById(id);
+		return formuleSrv.getById(id);
 	}
 	
 	@PostMapping
-	public Client ajoutClient(@Valid @RequestBody Client client, BindingResult result) 
+	public Formule ajoutFormule(@Valid @RequestBody Formule formule, BindingResult result) 
 	{
 		if(result.hasErrors()) 
 		{
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le client n'est pas valide");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "La formule n'est pas valide");
 		}
-		return clientSrv.insert(client);
+		return formuleSrv.insert(formule);
 	}
 	
 	@PutMapping("/{id}")
-	public Client modifierClient(@PathVariable Integer id,@RequestBody Client client) 
+	public Formule modifierFormule(@PathVariable Integer id,@RequestBody Formule formule) 
 	{
-		client.setId(id);
-		return clientSrv.update(client);
+		formule.setId(id);
+		return formuleSrv.update(formule);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void supprimerClient(@PathVariable Integer id) 
+	public void supprimerFormule(@PathVariable Integer id) 
 	{
-		clientSrv.deleteById(id);
+		formuleSrv.deleteById(id);
 	}
-	
-	
-
 }

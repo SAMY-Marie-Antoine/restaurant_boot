@@ -16,7 +16,7 @@ public class Client extends Compte {
 
 	
 	@OneToMany(mappedBy="client")
-	@JsonView(Views.CommandeWithVentes.class)
+	@JsonView(Views.Client.class)
 	private List<Commande> histCommandes;
 		
 	public Client() {}
