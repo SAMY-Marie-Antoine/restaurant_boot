@@ -10,9 +10,13 @@ public class Views {
 	public class ProduitWithVentes extends Produit{}
 	public class Commande extends Common {}//Acces JSON présent sur toutes les relations toOne dans la classe Filiere
 	public class CommandeWithVentes extends Commande{} //Acces JSON spécifique pour les chargements toMany
+	//public class DetailCommandeWithVentes extends Commande{} //Acces JSON spécifique pour les chargements toMany
 
 	public class DetailCommande extends Common {}//Acces JSON présent sur toutes les relations toOne dans la classe Filiere
-	public class DetailCommandeWithVentes extends DetailCommande{} //Acces JSON spécifique pour les chargements toMany
+	public class DetailCommandeAll extends DetailCommande {}
+	//public class DetailCommandeWithVentes extends CommandeWithVentes{} //Acces JSON spécifique pour les chargements toMany
+	//public class DetailCommande extends DetailCommande{} //Acces JSON spécifique pour les chargements toMany
+	//public class DetailCommandeWithVentes extends DetailCommande{} //Acces JSON spécifique pour les chargements toMany
 	
 
 	public class Client extends Common {}//Acces JSON présent sur toutes les relations toOne dans la classe Matiere

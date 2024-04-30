@@ -33,7 +33,8 @@ public class Commande {
 	@JsonView(Views.Common.class)
 	private Avis avis;
 	@OneToMany(mappedBy = "commande")
-	@JsonView(Views.DetailCommandeWithVentes.class)
+	//@JsonView(Views.DetailCommandeWithVentes.class)
+	@JsonView(Views.DetailCommande.class)
 	private List<DetailCommande> detailCommandes;
 	@Column(length=140)
 	private String commentaire;
