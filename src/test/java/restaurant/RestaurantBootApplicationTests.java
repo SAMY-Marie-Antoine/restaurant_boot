@@ -140,6 +140,7 @@ class RestaurantBootApplicationTests {
 
         cmd1.setCommentaire("Pas trop de sel");
         cmd1.setClient(client1);
+        
 
         DetailCommande detailCommande4 = new DetailCommande(1,cmd2,menu3);
         DetailCommande detailCommande5 = new DetailCommande(3,cmd2,plat4);
@@ -156,6 +157,9 @@ class RestaurantBootApplicationTests {
 
         avisSrv.insert(avis1);
         avisSrv.insert(avis2);
+        
+        cmd1.setAvis(avis1);
+        cmd2.setAvis(avis2);
         commandeSrv.insert(cmd1);
         commandeSrv.insert(cmd2);
 
