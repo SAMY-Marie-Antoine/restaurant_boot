@@ -37,7 +37,7 @@ public class Formule {
 	@Enumerated(EnumType.STRING)
 	@CollectionTable(name="composition_formule")
 	@Column(name="type_produit",nullable = false)
-	@JsonView(Views.ProduitWithVentes.class)
+	@JsonView(Views.Formule.class)
 	private List<TypeProduit> typeProduits=new ArrayList<TypeProduit>();
 	
 	public Formule() {}
