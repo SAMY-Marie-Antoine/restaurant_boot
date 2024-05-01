@@ -61,7 +61,13 @@ public class CommandeRestController {
 	{
 		return commandeSrv.getById(id);
 	}
-	
+	/*test*/
+	@GetMapping("/detailsetventes/{id}")
+	@JsonView(Views.CommandeWithDetailsWithVentes.class)
+	public Commande ficheCommandeDetailsClient(@PathVariable Integer id) 
+	{
+		return commandeSrv.getById(id);
+	}
 	@PostMapping
 	public Commande ajoutCommande(@Valid @RequestBody Commande commande, BindingResult result) 
 	{

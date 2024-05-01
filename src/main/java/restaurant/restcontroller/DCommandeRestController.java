@@ -29,7 +29,7 @@ import restaurant.view.Views;
 @RestController
 @RequestMapping("/api/detailCommande")
 @CrossOrigin("*")
-public class DCommande {
+public class DCommandeRestController {
 	
 	@Autowired 
 	DetailCommandeService dCommandeSrv;
