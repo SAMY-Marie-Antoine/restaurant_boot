@@ -27,13 +27,14 @@ public class DetailCommande {
 	@JsonView(Views.Common.class)
 	private double prix;
 	@Column
+	@JsonView(Views.Common.class)
 	private int qte;
 	//@JsonView(Views.Common.class)
 	@JsonView(Views.DetailCommandeAll.class)
 	@ManyToOne
 	private Commande commande;
-	@JsonView(Views.Common.class)
 	@OneToOne
+	@JsonView(Views.Common.class)
 	private Produit produit;
 	@OneToOne
 	@JsonView(Views.Common.class)

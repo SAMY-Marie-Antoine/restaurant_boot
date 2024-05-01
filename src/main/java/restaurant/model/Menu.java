@@ -19,12 +19,15 @@ public class Menu{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.Common.class)
 	private Integer id;
 	@OneToMany
-	@JsonView(Views.ProduitWithVentes.class)
+	@JsonView(Views.Common.class)
+	//@JsonView(Views.ProduitWithVentes.class)
 	private List<Produit> produits;
 	@ManyToOne
-	@JsonView(Views.MenuWithFormules.class)
+	//@JsonView(Views.MenuWithFormules.class)
+	@JsonView(Views.Common.class)
 	private Formule formule;
 	
 	public Menu() {	}
