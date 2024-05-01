@@ -21,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.model.Produit;
+import restaurant.model.TypeProduit;
 import restaurant.service.ProduitService;
 import restaurant.view.Views;
 
@@ -37,6 +38,15 @@ public class ProduitRestController {
 	public List<Produit> allProduits() 
 	{
 		return produitSrv.getAll();
+	}
+
+	@GetMapping("/bytype/{type}")
+	@JsonView(Views.Produit.class)
+	public List<Produit> allProduitsByType(@PathVariable String type)
+	{
+		TypeProduit typeEnum = TypeProduit.valueOf(type);
+		System.out.println(typeEnum);
+		return produitSrv.findAllByType(typeEnum);
 	}
 	
 	@GetMapping("/{id}")
