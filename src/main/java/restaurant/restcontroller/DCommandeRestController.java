@@ -21,7 +21,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.model.DetailCommande;
-import restaurant.model.Produit;
 import restaurant.service.DetailCommandeService;
 import restaurant.view.Views;
 //import restaurant.view.Views.DetailCommande;

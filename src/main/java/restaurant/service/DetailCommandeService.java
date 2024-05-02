@@ -6,9 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import restaurant.dao.IDAOAvis;
 import restaurant.dao.IDAODetailCommande;
-import restaurant.model.Avis;
 import restaurant.model.DetailCommande;
 
 @Service

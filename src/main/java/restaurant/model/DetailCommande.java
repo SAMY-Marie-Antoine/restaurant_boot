@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -29,14 +30,16 @@ public class DetailCommande {
 	@Column
 	@JsonView(Views.Common.class)
 	private int qte;
-	//@JsonView(Views.Common.class)
-	@JsonView(Views.DetailCommandeAll.class)
+	@JsonView(Views.DetailCommande.class)
 	@ManyToOne
+	@JoinColumn
 	private Commande commande;
 	@OneToOne
+	@JoinColumn
 	@JsonView(Views.Common.class)
 	private Produit produit;
 	@OneToOne
+	@JoinColumn
 	@JsonView(Views.Common.class)
 	private Menu menu;
 		

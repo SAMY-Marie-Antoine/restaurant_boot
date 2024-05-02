@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -22,12 +24,10 @@ public class Menu{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.Common.class)
 	private Integer id;
-	@OneToMany
+	@ManyToMany
 	@JsonView(Views.Common.class)
-	//@JsonView(Views.ProduitWithVentes.class)
 	private List<Produit> produits;
 	@ManyToOne
-	//@JsonView(Views.MenuWithFormules.class)
 	@JsonView(Views.Common.class)
 	private Formule formule;
 	@Column()

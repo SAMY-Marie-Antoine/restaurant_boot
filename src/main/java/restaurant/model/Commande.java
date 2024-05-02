@@ -30,19 +30,20 @@ public class Commande {
 	@JsonView(Views.CommandeWithVentes.class)
 	private Client client;
 	@OneToOne
-	@JsonView(Views.Common.class)
+	@JsonView(Views.Commande.class)
 	private Avis avis;
 	@OneToMany(mappedBy = "commande")
 	@JsonView(Views.CommandeWithDetailsWithVentes.class)
 	//@JsonView(Views.DetailCommande.class)
 	private List<DetailCommande> detailCommandes;
 	@Column(length=140)
+	@JsonView(Views.Commande.class)
 	private String commentaire;
 	@Column(nullable=false,columnDefinition="DATE")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.Commande.class)
 	private LocalDate dateCommande;
 	@Column(nullable=false,columnDefinition="TIME")
-	@JsonView(Views.Common.class)
+	@JsonView(Views.Commande.class)
 	private LocalTime heureCommande;
 		
 	public Commande() {
