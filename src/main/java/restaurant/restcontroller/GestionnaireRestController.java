@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.model.Client;
 import restaurant.model.Gestionnaire;
+import restaurant.restcontroller.dto.ConnexionDTO;
 import restaurant.service.GestionnaireService;
 import restaurant.view.Views;
 //import restaurant.view.Views.Common;
@@ -69,6 +70,18 @@ public class GestionnaireRestController {
 	public void supprimerGestionnaire(@PathVariable Integer id) 
 	{
 		gestionnaireSrv.deleteById(id);
+	}
+
+	@PostMapping("/login")
+	@JsonView(Views.Gestionnaire.class)
+	public Gestionnaire connexion(@RequestBody ConnexionDTO connexionDTO) {
+		Gestionnaire gestionnaire = this.gestionnaireSrv.findByUsernameAndPassword(connexionDTO.getUsername(), connexionDTO.getPassword());
+		
+		if(gestionnaire == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
+		return gestionnaire;
 	}
 	
 }

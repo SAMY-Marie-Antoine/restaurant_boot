@@ -61,6 +61,8 @@ public class GestionnaireService {
 		daoGestionnaire.deleteById(id);
 	}
 	
-	
+	public Gestionnaire findByUsernameAndPassword(String username, String password){
+		return (Gestionnaire) daoGestionnaire.findByUsernameAndPassword(username,password);
+	}
 	
 }

@@ -1,9 +1,11 @@
 package restaurant.restcontroller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.hibernate.mapping.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -21,7 +23,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.model.Client;
-import restaurant.model.Produit;
+import restaurant.restcontroller.dto.ConnexionDTO;
 import restaurant.service.ClientService;
 import restaurant.view.Views;
 
@@ -40,6 +42,18 @@ public class ClientRestController {
 		return clientSrv.getAll();
 	}
 	
+	@PostMapping("/login")
+	@JsonView(Views.Client.class)
+	public Client connexion(@RequestBody ConnexionDTO connexionDTO) {
+		Client client = this.clientSrv.findByUsernameAndPassword(connexionDTO.getUsername(), connexionDTO.getPassword());
+		
+		if(client == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+		
+		return client;
+	}
+
 	@GetMapping("/{id}")
 	@JsonView(Views.Client.class)
 	public Client ficheClient(@PathVariable Integer id) 
