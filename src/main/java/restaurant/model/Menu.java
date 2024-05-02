@@ -2,6 +2,7 @@ package restaurant.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +30,13 @@ public class Menu{
 	//@JsonView(Views.MenuWithFormules.class)
 	@JsonView(Views.Common.class)
 	private Formule formule;
+	@Column()
+	@JsonView(Views.Common.class)
+	private String nom_photo_pte;
+	@Column()
+	@JsonView(Views.Common.class)
+	private String nom_photo_gde;
+	
 	
 	public Menu() {	}
 	
@@ -60,6 +68,24 @@ public class Menu{
 
 	public void setFormule(Formule formule) {
 		this.formule = formule;
+	}
+	public String getNom_photo_pte() {
+		return nom_photo_pte;
+	}
+
+
+	public void setNom_photo_pte(String nom_photo_pte) {
+		this.nom_photo_pte = nom_photo_pte;
+	}
+
+
+	public String getNom_photo_gde() {
+		return nom_photo_gde;
+	}
+
+
+	public void setNom_photo_gde(String nom_photo_gde) {
+		this.nom_photo_gde = nom_photo_gde;
 	}
 
 }
