@@ -59,8 +59,8 @@ public class ClientService {
 		daoClient.deleteById(id);
 	}
 
-	public Client findByUsernameAndPassword(String username, String password){
-		return (Client) daoClient.findByUsernameAndPassword(username,password);
+	public Compte findByUsernameAndPassword(String username, String password){
+		return (Compte) daoClient.findByUsernameAndPassword(username,password);
 	}
 		
 }

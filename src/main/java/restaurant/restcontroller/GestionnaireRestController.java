@@ -20,7 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import restaurant.model.Client;
+import restaurant.model.Compte;
 import restaurant.model.Gestionnaire;
 import restaurant.restcontroller.dto.ConnexionDTO;
 import restaurant.service.GestionnaireService;
@@ -28,7 +28,7 @@ import restaurant.view.Views;
 //import restaurant.view.Views.Common;
 
 @RestController
-@RequestMapping("/api/gestionaires")
+@RequestMapping("/api/gestionnaires")
 @CrossOrigin("*")
 public class GestionnaireRestController {
 
@@ -74,8 +74,8 @@ public class GestionnaireRestController {
 
 	@PostMapping("/login")
 	@JsonView(Views.Gestionnaire.class)
-	public Gestionnaire connexion(@RequestBody ConnexionDTO connexionDTO) {
-		Gestionnaire gestionnaire = this.gestionnaireSrv.findByUsernameAndPassword(connexionDTO.getUsername(), connexionDTO.getPassword());
+	public Compte connexion(@RequestBody ConnexionDTO connexionDTO) {
+		Compte gestionnaire = this.gestionnaireSrv.findByUsernameAndPassword(connexionDTO.getUsername(), connexionDTO.getPassword());
 		
 		if(gestionnaire == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import restaurant.dao.IDAOCompte;
-import restaurant.model.Client;
 import restaurant.model.Compte;
 import restaurant.model.Gestionnaire;
 
@@ -61,8 +60,8 @@ public class GestionnaireService {
 		daoGestionnaire.deleteById(id);
 	}
 	
-	public Gestionnaire findByUsernameAndPassword(String username, String password){
-		return (Gestionnaire) daoGestionnaire.findByUsernameAndPassword(username,password);
+	public Compte findByUsernameAndPassword(String username, String password){
+		return (Compte) daoGestionnaire.findByUsernameAndPassword(username,password);
 	}
 	
 }

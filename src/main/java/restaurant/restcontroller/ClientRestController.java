@@ -1,5 +1,6 @@
 package restaurant.restcontroller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import restaurant.model.Client;
+import restaurant.model.Compte;
 import restaurant.restcontroller.dto.ConnexionDTO;
 import restaurant.service.ClientService;
 import restaurant.view.Views;
@@ -44,14 +46,25 @@ public class ClientRestController {
 	
 	@PostMapping("/login")
 	@JsonView(Views.Client.class)
-	public Client connexion(@RequestBody ConnexionDTO connexionDTO) {
-		Client client = this.clientSrv.findByUsernameAndPassword(connexionDTO.getUsername(), connexionDTO.getPassword());
+	public HashMap<String,String> connexion(@RequestBody ConnexionDTO connexionDTO) {
+		Compte client = this.clientSrv.findByUsernameAndPassword(connexionDTO.getUsername(), connexionDTO.getPassword());
 		
 		if(client == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		
-		return client;
+		HashMap<String,String> jsonmap = new HashMap<String,String> ();
+		jsonmap.put("id",Integer.toString(client.getId()));
+		jsonmap.put("username",client.getUsername());
+		jsonmap.put("password",client.getPassword());
+		if(client instanceof Client){
+			jsonmap.put("gestionnaire","false");
+			return jsonmap;
+		}
+		else{
+			jsonmap.put("gestionnaire","true");
+			return jsonmap;
+		}
 	}
 
 	@GetMapping("/{id}")

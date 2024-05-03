@@ -13,7 +13,9 @@ public interface IDAOCompte extends JpaRepository<Compte, Integer>{
 	
     @Query("from Client")
 	public List<Client> findAllClient();
+
     @Query("from Gestionnaire")
 	public List<Gestionnaire> findAllGestionnaire();
+
     public Compte findByUsernameAndPassword(String username, String password);
 }
