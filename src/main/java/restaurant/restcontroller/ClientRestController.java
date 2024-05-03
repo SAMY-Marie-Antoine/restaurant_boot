@@ -44,23 +44,23 @@ public class ClientRestController {
 	
 	@PostMapping("/login")
 	@JsonView(Views.Client.class)
-	public HashMap<String,String> connexion(@RequestBody ConnexionDTO connexionDTO) {
+	public HashMap<String,Object> connexion(@RequestBody ConnexionDTO connexionDTO) {
 		Compte client = this.clientSrv.findByUsernameAndPassword(connexionDTO.getUsername(), connexionDTO.getPassword());
 		
 		if(client == null) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 		
-		HashMap<String,String> jsonmap = new HashMap<String,String> ();
-		jsonmap.put("id",Integer.toString(client.getId()));
+		HashMap<String,Object> jsonmap = new HashMap<String,Object> ();
+		jsonmap.put("id",client.getId());
 		jsonmap.put("username",client.getUsername());
 		jsonmap.put("password",client.getPassword());
 		if(client instanceof Client){
-			jsonmap.put("gestionnaire","false");
+			jsonmap.put("gestionnaire",false);
 			return jsonmap;
 		}
 		else{
-			jsonmap.put("gestionnaire","true");
+			jsonmap.put("gestionnaire",true);
 			return jsonmap;
 		}
 	}
