@@ -6,10 +6,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
-import restaurant.view.Views;
-
 @Entity
 @DiscriminatorValue("client")
 public class Client extends Compte {

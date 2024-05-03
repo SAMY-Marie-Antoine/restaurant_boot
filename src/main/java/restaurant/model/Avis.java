@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,10 +27,6 @@ public class Avis {
 	@Column(length = 250, nullable=false)
 	@JsonView(Views.Common.class)
 	private String avis;
-	// @ManyToOne
-	// @JoinColumn(name="id_client",nullable=false)
-	// @JsonView(Views.ClientWithAchats.class)
-	// private Client client;
 	@OneToOne
 	@JoinColumn(name="id_commande",nullable=false)
 	@JsonView(Views.Client.class)
